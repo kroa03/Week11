@@ -12,6 +12,12 @@ using System.Windows.Forms;
 // Revision History:
 // Date         Changes
 // 22-Jul-2019  Created
+// 24-Jul-2019  Created BMICalculatorForm_Load Event
+// 24-Jul-2019  Created BMICalculatorForm_FormClosing Event
+// 24-Jul-2019  Created MetricRadioButton_CheckedChanged Event
+// 24-Jul-2019  Created ImperialRadioButton_CheckedChanged Event
+// 24-Jul-2019  Created CalculateBMIButton_Click Event
+// 24-Jul-2019  Created ResetButton_Click Event
 namespace Assignment04
 {
     public partial class BMICalculatorForm : Form
@@ -19,6 +25,23 @@ namespace Assignment04
         public BMICalculatorForm()
         {
             InitializeComponent();
+        }
+
+        private void BMICalculatorForm_Load(object sender, EventArgs e)
+        {
+            if (HeightTextBox.Text != null & WeightTextBox.Text != null)
+            {
+                CalculateBMIButton.Enabled = true;
+            }
+            else
+            {
+                CalculateBMIButton.Enabled = false;
+            }
+        }
+
+        private void BMICalculatorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void MetricRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -35,17 +58,9 @@ namespace Assignment04
 
         private void CalculateBMIButton_Click(object sender, EventArgs e)
         {
-            double bmi;
             double w = Convert.ToDouble(WeightTextBox.Text);
             double h = Convert.ToDouble(HeightTextBox.Text);
-            if (MetricRadioButton.Checked == true)
-            {
-                bmi = w / (h * h);
-            }
-            else
-            {
-                bmi = (w * 703) / (h * h);
-            }
+            double bmi = MetricRadioButton.Checked == true ? w / (h * h) : (w * 703) / (h * h);
             if (bmi < 18.5)
             {
                 MultilineTextBox.Text = "Underweight";
@@ -66,7 +81,7 @@ namespace Assignment04
             {
                 MultilineTextBox.Text = "Error!";
             }
-            BMITextBox.Text = $"BMI: {bmi:N2}";
+            BMITextBox.Text = $"BMI: {bmi:N1}";
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
@@ -75,18 +90,6 @@ namespace Assignment04
             WeightTextBox.Text = string.Empty;
             BMITextBox.Text = string.Empty;
             MultilineTextBox.Text = string.Empty;
-        }
-
-        private void BMICalculatorForm_Load(object sender, EventArgs e)
-        {
-            if (HeightTextBox.Text != "" & WeightTextBox.Text != "")
-            {
-                CalculateBMIButton.Enabled = true;
-            }
-            else
-            {
-                CalculateBMIButton.Enabled = false;
-            }
         }
     }
 }

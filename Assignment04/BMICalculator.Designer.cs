@@ -91,8 +91,9 @@
             this.UnitHeightLabel.Font = new System.Drawing.Font("Yu Gothic UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UnitHeightLabel.Location = new System.Drawing.Point(261, 10);
             this.UnitHeightLabel.Name = "UnitHeightLabel";
-            this.UnitHeightLabel.Size = new System.Drawing.Size(0, 30);
+            this.UnitHeightLabel.Size = new System.Drawing.Size(31, 30);
             this.UnitHeightLabel.TabIndex = 6;
+            this.UnitHeightLabel.Text = "m";
             // 
             // HeightTextBox
             // 
@@ -154,7 +155,6 @@
             this.BMITextBox.Name = "BMITextBox";
             this.BMITextBox.Size = new System.Drawing.Size(109, 36);
             this.BMITextBox.TabIndex = 6;
-            this.BMITextBox.Text = "BMI: ";
             // 
             // CalculateBMIButton
             // 
@@ -185,7 +185,6 @@
             this.MultilineTextBox.Name = "MultilineTextBox";
             this.MultilineTextBox.Size = new System.Drawing.Size(169, 44);
             this.MultilineTextBox.TabIndex = 9;
-            this.MultilineTextBox.Text = "Underweight";
             // 
             // WeightTableLayoutPanel
             // 
@@ -217,8 +216,9 @@
             this.UnitWeightLabel.Font = new System.Drawing.Font("Yu Gothic UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UnitWeightLabel.Location = new System.Drawing.Point(261, 10);
             this.UnitWeightLabel.Name = "UnitWeightLabel";
-            this.UnitWeightLabel.Size = new System.Drawing.Size(0, 30);
+            this.UnitWeightLabel.Size = new System.Drawing.Size(35, 30);
             this.UnitWeightLabel.TabIndex = 6;
+            this.UnitWeightLabel.Text = "kg";
             // 
             // WeightTextBox
             // 
@@ -541,6 +541,7 @@
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BMI Calculator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BMICalculatorForm_FormClosing);
             this.Load += new System.EventHandler(this.BMICalculatorForm_Load);
             this.HeightTableLayoutPanel.ResumeLayout(false);
             this.HeightTableLayoutPanel.PerformLayout();

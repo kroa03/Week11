@@ -19,10 +19,9 @@ namespace Assignment04
 
         private void StartFormTimer_Tick(object sender, EventArgs e)
         {
-            this.Hide();
-            BMICalculatorForm bmiCalculatorForm = new BMICalculatorForm();
-            bmiCalculatorForm.Show();
             StartFormTimer.Enabled = false;
+            Program.Forms[FormName.BMICALCULATOR_FORM].Show();
+            this.Hide();
         }
     }
 }

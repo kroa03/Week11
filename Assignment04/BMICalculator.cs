@@ -20,5 +20,17 @@ namespace Assignment04
         {
             InitializeComponent();
         }
+
+        private void MetricRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            UnitHeightLabel.Text = "m";
+            UnitWeightLabel.Text = "kg";
+        }
+
+        private void ImperialRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            UnitHeightLabel.Text = "in";
+            UnitWeightLabel.Text = "lbs";
+        }
     }
 }

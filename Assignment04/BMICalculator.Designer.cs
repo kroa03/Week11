@@ -38,7 +38,7 @@
             this.CalculateBMIButton = new System.Windows.Forms.Button();
             this.MultilineTextBox = new System.Windows.Forms.TextBox();
             this.WeightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.WeightUnitLabel = new System.Windows.Forms.Label();
+            this.UnitWeightLabel = new System.Windows.Forms.Label();
             this.WeightTextBox = new System.Windows.Forms.TextBox();
             this.WeightLabel = new System.Windows.Forms.Label();
             this.BMIProgressBar = new System.Windows.Forms.ProgressBar();
@@ -126,6 +126,7 @@
             this.ImperialRadioButton.TabIndex = 2;
             this.ImperialRadioButton.Text = "IMPERIAL";
             this.ImperialRadioButton.UseVisualStyleBackColor = true;
+            this.ImperialRadioButton.CheckedChanged += new System.EventHandler(this.ImperialRadioButton_CheckedChanged);
             // 
             // MetricRadioButton
             // 
@@ -140,6 +141,7 @@
             this.MetricRadioButton.TabStop = true;
             this.MetricRadioButton.Text = "METRIC";
             this.MetricRadioButton.UseVisualStyleBackColor = true;
+            this.MetricRadioButton.CheckedChanged += new System.EventHandler(this.MetricRadioButton_CheckedChanged);
             // 
             // BMITextBox
             // 
@@ -193,7 +195,7 @@
             this.WeightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.WeightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.WeightTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
-            this.WeightTableLayoutPanel.Controls.Add(this.WeightUnitLabel, 2, 0);
+            this.WeightTableLayoutPanel.Controls.Add(this.UnitWeightLabel, 2, 0);
             this.WeightTableLayoutPanel.Controls.Add(this.WeightTextBox, 1, 0);
             this.WeightTableLayoutPanel.Controls.Add(this.WeightLabel, 0, 0);
             this.WeightTableLayoutPanel.Location = new System.Drawing.Point(-7, 105);
@@ -207,16 +209,16 @@
             this.WeightTableLayoutPanel.Size = new System.Drawing.Size(315, 50);
             this.WeightTableLayoutPanel.TabIndex = 10;
             // 
-            // WeightUnitLabel
+            // UnitWeightLabel
             // 
-            this.WeightUnitLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.WeightUnitLabel.AutoSize = true;
-            this.WeightUnitLabel.Font = new System.Drawing.Font("Yu Gothic UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WeightUnitLabel.Location = new System.Drawing.Point(261, 10);
-            this.WeightUnitLabel.Name = "WeightUnitLabel";
-            this.WeightUnitLabel.Size = new System.Drawing.Size(35, 30);
-            this.WeightUnitLabel.TabIndex = 6;
-            this.WeightUnitLabel.Text = "kg";
+            this.UnitWeightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.UnitWeightLabel.AutoSize = true;
+            this.UnitWeightLabel.Font = new System.Drawing.Font("Yu Gothic UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UnitWeightLabel.Location = new System.Drawing.Point(261, 10);
+            this.UnitWeightLabel.Name = "UnitWeightLabel";
+            this.UnitWeightLabel.Size = new System.Drawing.Size(35, 30);
+            this.UnitWeightLabel.TabIndex = 6;
+            this.UnitWeightLabel.Text = "kg";
             // 
             // WeightTextBox
             // 
@@ -559,7 +561,7 @@
         private System.Windows.Forms.TextBox MultilineTextBox;
         private System.Windows.Forms.Label UnitHeightLabel;
         private System.Windows.Forms.TableLayoutPanel WeightTableLayoutPanel;
-        private System.Windows.Forms.Label WeightUnitLabel;
+        private System.Windows.Forms.Label UnitWeightLabel;
         private System.Windows.Forms.TextBox WeightTextBox;
         private System.Windows.Forms.Label WeightLabel;
         private System.Windows.Forms.ProgressBar BMIProgressBar;

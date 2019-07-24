@@ -8,10 +8,15 @@ using System.Windows.Forms;
 // Revision History:
 // Date         Changes
 // 22-Jul-2019  Created
+// 24-Jul-2019  Instantiated Dictionary Forms
+//              Created and added enums START_FORM, BMICALCULATOR_FORM at Forms
+//              Application.Run(Forms[FormName.START_FORM]);
 namespace Assignment04
 {
-    static class Program
+    public static class Program
     {
+        public static Dictionary<FormName, Form> Forms;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -20,7 +25,13 @@ namespace Assignment04
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BMICalculatorForm());
+            Application.Run(new StartForm());
+
+            Forms = new Dictionary<FormName, Form>();
+            Forms.Add(FormName.START_FORM, new StartForm());
+            Forms.Add(FormName.BMICALCULATOR_FORM, new BMICalculatorForm());
+
+            Application.Run(Forms[FormName.START_FORM]);
         }
     }
 }

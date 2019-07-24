@@ -44,6 +44,8 @@
             this.BMIProgressBar = new System.Windows.Forms.ProgressBar();
             this.ResetButton = new System.Windows.Forms.Button();
             this.NumberKeysTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.BackspaceButton = new System.Windows.Forms.Button();
+            this.PeriodButton = new System.Windows.Forms.Button();
             this.SevenButton = new System.Windows.Forms.Button();
             this.EightButton = new System.Windows.Forms.Button();
             this.NineButton = new System.Windows.Forms.Button();
@@ -54,8 +56,6 @@
             this.TwoButton = new System.Windows.Forms.Button();
             this.ThreeButton = new System.Windows.Forms.Button();
             this.ZeroButton = new System.Windows.Forms.Button();
-            this.PeriodButton = new System.Windows.Forms.Button();
-            this.BackspaceButton = new System.Windows.Forms.Button();
             this.HeightTableLayoutPanel.SuspendLayout();
             this.WeightTableLayoutPanel.SuspendLayout();
             this.NumberKeysTableLayoutPanel.SuspendLayout();
@@ -294,6 +294,42 @@
             this.NumberKeysTableLayoutPanel.Size = new System.Drawing.Size(305, 150);
             this.NumberKeysTableLayoutPanel.TabIndex = 13;
             // 
+            // BackspaceButton
+            // 
+            this.BackspaceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BackspaceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BackspaceButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.BackspaceButton.FlatAppearance.BorderSize = 0;
+            this.BackspaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackspaceButton.Font = new System.Drawing.Font("Yu Gothic UI Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackspaceButton.Location = new System.Drawing.Point(203, 112);
+            this.BackspaceButton.Margin = new System.Windows.Forms.Padding(1);
+            this.BackspaceButton.Name = "BackspaceButton";
+            this.BackspaceButton.Size = new System.Drawing.Size(101, 37);
+            this.BackspaceButton.TabIndex = 20;
+            this.BackspaceButton.Text = "<-";
+            this.BackspaceButton.UseVisualStyleBackColor = false;
+            // 
+            // PeriodButton
+            // 
+            this.PeriodButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PeriodButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.PeriodButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.PeriodButton.FlatAppearance.BorderSize = 0;
+            this.PeriodButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PeriodButton.Font = new System.Drawing.Font("Yu Gothic UI Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PeriodButton.Location = new System.Drawing.Point(102, 112);
+            this.PeriodButton.Margin = new System.Windows.Forms.Padding(1);
+            this.PeriodButton.Name = "PeriodButton";
+            this.PeriodButton.Size = new System.Drawing.Size(99, 37);
+            this.PeriodButton.TabIndex = 19;
+            this.PeriodButton.Text = ".";
+            this.PeriodButton.UseVisualStyleBackColor = false;
+            // 
             // SevenButton
             // 
             this.SevenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -473,42 +509,6 @@
             this.ZeroButton.TabIndex = 18;
             this.ZeroButton.Text = "0";
             this.ZeroButton.UseVisualStyleBackColor = false;
-            // 
-            // PeriodButton
-            // 
-            this.PeriodButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PeriodButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.PeriodButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.PeriodButton.FlatAppearance.BorderSize = 0;
-            this.PeriodButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PeriodButton.Font = new System.Drawing.Font("Yu Gothic UI Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PeriodButton.Location = new System.Drawing.Point(102, 112);
-            this.PeriodButton.Margin = new System.Windows.Forms.Padding(1);
-            this.PeriodButton.Name = "PeriodButton";
-            this.PeriodButton.Size = new System.Drawing.Size(99, 37);
-            this.PeriodButton.TabIndex = 19;
-            this.PeriodButton.Text = ".";
-            this.PeriodButton.UseVisualStyleBackColor = false;
-            // 
-            // BackspaceButton
-            // 
-            this.BackspaceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BackspaceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.BackspaceButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.BackspaceButton.FlatAppearance.BorderSize = 0;
-            this.BackspaceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackspaceButton.Font = new System.Drawing.Font("Yu Gothic UI Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackspaceButton.Location = new System.Drawing.Point(203, 112);
-            this.BackspaceButton.Margin = new System.Windows.Forms.Padding(1);
-            this.BackspaceButton.Name = "BackspaceButton";
-            this.BackspaceButton.Size = new System.Drawing.Size(101, 37);
-            this.BackspaceButton.TabIndex = 20;
-            this.BackspaceButton.Text = "<-";
-            this.BackspaceButton.UseVisualStyleBackColor = false;
             // 
             // BMICalculatorForm
             // 

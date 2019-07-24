@@ -91,9 +91,8 @@
             this.UnitHeightLabel.Font = new System.Drawing.Font("Yu Gothic UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UnitHeightLabel.Location = new System.Drawing.Point(261, 10);
             this.UnitHeightLabel.Name = "UnitHeightLabel";
-            this.UnitHeightLabel.Size = new System.Drawing.Size(31, 30);
+            this.UnitHeightLabel.Size = new System.Drawing.Size(0, 30);
             this.UnitHeightLabel.TabIndex = 6;
-            this.UnitHeightLabel.Text = "m";
             // 
             // HeightTextBox
             // 
@@ -105,6 +104,7 @@
             this.HeightTextBox.Name = "HeightTextBox";
             this.HeightTextBox.Size = new System.Drawing.Size(98, 43);
             this.HeightTextBox.TabIndex = 3;
+            this.HeightTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // HeightLabel
             // 
@@ -171,6 +171,7 @@
             this.CalculateBMIButton.TabIndex = 8;
             this.CalculateBMIButton.Text = "Calculate BMI";
             this.CalculateBMIButton.UseVisualStyleBackColor = false;
+            this.CalculateBMIButton.Click += new System.EventHandler(this.CalculateBMIButton_Click);
             // 
             // MultilineTextBox
             // 
@@ -216,9 +217,8 @@
             this.UnitWeightLabel.Font = new System.Drawing.Font("Yu Gothic UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UnitWeightLabel.Location = new System.Drawing.Point(261, 10);
             this.UnitWeightLabel.Name = "UnitWeightLabel";
-            this.UnitWeightLabel.Size = new System.Drawing.Size(35, 30);
+            this.UnitWeightLabel.Size = new System.Drawing.Size(0, 30);
             this.UnitWeightLabel.TabIndex = 6;
-            this.UnitWeightLabel.Text = "kg";
             // 
             // WeightTextBox
             // 
@@ -230,6 +230,7 @@
             this.WeightTextBox.Name = "WeightTextBox";
             this.WeightTextBox.Size = new System.Drawing.Size(98, 43);
             this.WeightTextBox.TabIndex = 4;
+            this.WeightTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // WeightLabel
             // 
@@ -262,6 +263,7 @@
             this.ResetButton.TabIndex = 12;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // NumberKeysTableLayoutPanel
             // 
@@ -539,6 +541,7 @@
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BMI Calculator";
+            this.Load += new System.EventHandler(this.BMICalculatorForm_Load);
             this.HeightTableLayoutPanel.ResumeLayout(false);
             this.HeightTableLayoutPanel.PerformLayout();
             this.WeightTableLayoutPanel.ResumeLayout(false);

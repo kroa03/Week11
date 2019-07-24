@@ -25,7 +25,6 @@ namespace Assignment04
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartForm());
 
             Forms = new Dictionary<FormName, Form>();
             Forms.Add(FormName.START_FORM, new StartForm());

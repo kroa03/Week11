@@ -45,7 +45,7 @@
             this.ResetButton = new System.Windows.Forms.Button();
             this.NumberKeysTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.BackspaceButton = new System.Windows.Forms.Button();
-            this.PeriodButton = new System.Windows.Forms.Button();
+            this.DecimalButton = new System.Windows.Forms.Button();
             this.SevenButton = new System.Windows.Forms.Button();
             this.EightButton = new System.Windows.Forms.Button();
             this.NineButton = new System.Windows.Forms.Button();
@@ -275,7 +275,7 @@
             this.NumberKeysTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.NumberKeysTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.NumberKeysTableLayoutPanel.Controls.Add(this.BackspaceButton, 0, 3);
-            this.NumberKeysTableLayoutPanel.Controls.Add(this.PeriodButton, 0, 3);
+            this.NumberKeysTableLayoutPanel.Controls.Add(this.DecimalButton, 0, 3);
             this.NumberKeysTableLayoutPanel.Controls.Add(this.SevenButton, 0, 0);
             this.NumberKeysTableLayoutPanel.Controls.Add(this.EightButton, 1, 0);
             this.NumberKeysTableLayoutPanel.Controls.Add(this.NineButton, 2, 0);
@@ -313,26 +313,28 @@
             this.BackspaceButton.Name = "BackspaceButton";
             this.BackspaceButton.Size = new System.Drawing.Size(101, 37);
             this.BackspaceButton.TabIndex = 20;
+            this.BackspaceButton.Tag = "backspace";
             this.BackspaceButton.Text = "<-";
             this.BackspaceButton.UseVisualStyleBackColor = false;
             // 
-            // PeriodButton
+            // DecimalButton
             // 
-            this.PeriodButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DecimalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PeriodButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.PeriodButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.PeriodButton.FlatAppearance.BorderSize = 0;
-            this.PeriodButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PeriodButton.Font = new System.Drawing.Font("Yu Gothic UI Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PeriodButton.Location = new System.Drawing.Point(102, 112);
-            this.PeriodButton.Margin = new System.Windows.Forms.Padding(1);
-            this.PeriodButton.Name = "PeriodButton";
-            this.PeriodButton.Size = new System.Drawing.Size(99, 37);
-            this.PeriodButton.TabIndex = 19;
-            this.PeriodButton.Text = ".";
-            this.PeriodButton.UseVisualStyleBackColor = false;
+            this.DecimalButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.DecimalButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.DecimalButton.FlatAppearance.BorderSize = 0;
+            this.DecimalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DecimalButton.Font = new System.Drawing.Font("Yu Gothic UI Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DecimalButton.Location = new System.Drawing.Point(102, 112);
+            this.DecimalButton.Margin = new System.Windows.Forms.Padding(1);
+            this.DecimalButton.Name = "DecimalButton";
+            this.DecimalButton.Size = new System.Drawing.Size(99, 37);
+            this.DecimalButton.TabIndex = 19;
+            this.DecimalButton.Tag = "decimal";
+            this.DecimalButton.Text = ".";
+            this.DecimalButton.UseVisualStyleBackColor = false;
             // 
             // SevenButton
             // 
@@ -349,6 +351,7 @@
             this.SevenButton.Name = "SevenButton";
             this.SevenButton.Size = new System.Drawing.Size(99, 35);
             this.SevenButton.TabIndex = 9;
+            this.SevenButton.Tag = "7";
             this.SevenButton.Text = "7";
             this.SevenButton.UseVisualStyleBackColor = false;
             // 
@@ -367,6 +370,7 @@
             this.EightButton.Name = "EightButton";
             this.EightButton.Size = new System.Drawing.Size(99, 35);
             this.EightButton.TabIndex = 10;
+            this.EightButton.Tag = "8";
             this.EightButton.Text = "8";
             this.EightButton.UseVisualStyleBackColor = false;
             // 
@@ -385,6 +389,7 @@
             this.NineButton.Name = "NineButton";
             this.NineButton.Size = new System.Drawing.Size(101, 35);
             this.NineButton.TabIndex = 11;
+            this.NineButton.Tag = "9";
             this.NineButton.Text = "9";
             this.NineButton.UseVisualStyleBackColor = false;
             // 
@@ -403,6 +408,7 @@
             this.FourButton.Name = "FourButton";
             this.FourButton.Size = new System.Drawing.Size(99, 35);
             this.FourButton.TabIndex = 12;
+            this.FourButton.Tag = "4";
             this.FourButton.Text = "4";
             this.FourButton.UseVisualStyleBackColor = false;
             // 
@@ -421,6 +427,7 @@
             this.FiveButton.Name = "FiveButton";
             this.FiveButton.Size = new System.Drawing.Size(99, 35);
             this.FiveButton.TabIndex = 13;
+            this.FiveButton.Tag = "5";
             this.FiveButton.Text = "5";
             this.FiveButton.UseVisualStyleBackColor = false;
             // 
@@ -439,6 +446,7 @@
             this.SixButton.Name = "SixButton";
             this.SixButton.Size = new System.Drawing.Size(101, 35);
             this.SixButton.TabIndex = 14;
+            this.SixButton.Tag = "6";
             this.SixButton.Text = "6";
             this.SixButton.UseVisualStyleBackColor = false;
             // 
@@ -457,6 +465,7 @@
             this.OneButton.Name = "OneButton";
             this.OneButton.Size = new System.Drawing.Size(99, 35);
             this.OneButton.TabIndex = 15;
+            this.OneButton.Tag = "1";
             this.OneButton.Text = "1";
             this.OneButton.UseVisualStyleBackColor = false;
             // 
@@ -475,6 +484,7 @@
             this.TwoButton.Name = "TwoButton";
             this.TwoButton.Size = new System.Drawing.Size(99, 35);
             this.TwoButton.TabIndex = 16;
+            this.TwoButton.Tag = "2";
             this.TwoButton.Text = "2";
             this.TwoButton.UseVisualStyleBackColor = false;
             // 
@@ -493,6 +503,7 @@
             this.ThreeButton.Name = "ThreeButton";
             this.ThreeButton.Size = new System.Drawing.Size(101, 35);
             this.ThreeButton.TabIndex = 17;
+            this.ThreeButton.Tag = "3";
             this.ThreeButton.Text = "3";
             this.ThreeButton.UseVisualStyleBackColor = false;
             // 
@@ -511,6 +522,7 @@
             this.ZeroButton.Name = "ZeroButton";
             this.ZeroButton.Size = new System.Drawing.Size(99, 37);
             this.ZeroButton.TabIndex = 18;
+            this.ZeroButton.Tag = "0";
             this.ZeroButton.Text = "0";
             this.ZeroButton.UseVisualStyleBackColor = false;
             // 
@@ -577,7 +589,7 @@
         private System.Windows.Forms.Button FourButton;
         private System.Windows.Forms.Button FiveButton;
         private System.Windows.Forms.Button BackspaceButton;
-        private System.Windows.Forms.Button PeriodButton;
+        private System.Windows.Forms.Button DecimalButton;
         private System.Windows.Forms.Button SixButton;
         private System.Windows.Forms.Button OneButton;
         private System.Windows.Forms.Button TwoButton;

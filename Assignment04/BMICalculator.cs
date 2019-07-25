@@ -29,7 +29,7 @@ namespace Assignment04
 
         private void BMICalculatorForm_Load(object sender, EventArgs e)
         {
-            if (HeightTextBox.Text != null & WeightTextBox.Text != null)
+            if (HeightTextBox.Text != null && WeightTextBox.Text != null)
             {
                 CalculateBMIButton.Enabled = true;
             }
@@ -58,9 +58,9 @@ namespace Assignment04
 
         private void CalculateBMIButton_Click(object sender, EventArgs e)
         {
-            double w = Convert.ToDouble(WeightTextBox.Text);
-            double h = Convert.ToDouble(HeightTextBox.Text);
-            double bmi = MetricRadioButton.Checked == true ? w / (h * h) : (w * 703) / (h * h);
+            double weight = Convert.ToDouble(WeightTextBox.Text);
+            double height = Convert.ToDouble(HeightTextBox.Text);
+            double bmi = MetricRadioButton.Checked == true ? weight / (height * height) : (weight * 703) / (height * height);
             if (bmi < 18.5)
             {
                 MultilineTextBox.Text = "Underweight";

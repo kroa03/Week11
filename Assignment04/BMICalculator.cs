@@ -18,10 +18,18 @@ using System.Windows.Forms;
 // 24-Jul-2019  Created ImperialRadioButton_CheckedChanged Event
 // 24-Jul-2019  Created CalculateBMIButton_Click Event
 // 24-Jul-2019  Created ResetButton_Click Event
+// 25-Jul-2019  Created CalculatorButton_Click Event
+// 25-Jul-2019  Added properties to store values from numeric keypad
+// 25-Jul-2019  Created an overload for the method ResetButton_Click
 namespace Assignment04
 {
     public partial class BMICalculatorForm : Form
     {
+        // Class Properties
+        public string outputString { get; set; }
+        public float outputValue { get; set; }
+        public bool decimalExists  { get; set; }
+
         public BMICalculatorForm()
         {
             InitializeComponent();
@@ -29,6 +37,7 @@ namespace Assignment04
 
         private void BMICalculatorForm_Load(object sender, EventArgs e)
         {
+            ResetButton_Click();
             if (HeightTextBox.Text != null && WeightTextBox.Text != null)
             {
                 CalculateBMIButton.Enabled = true;
@@ -84,12 +93,72 @@ namespace Assignment04
             BMITextBox.Text = $"BMI: {bmi:N1}";
         }
 
+        private void ResetButton_Click()
+        {
+            HeightTextBox.Text = string.Empty;
+            WeightTextBox.Text = string.Empty;
+            BMITextBox.Text = string.Empty;
+            MultilineTextBox.Text = string.Empty;
+
+            outputString = "0";
+            outputValue = 0.0f;
+            decimalExists = false;
+
+        }
+
         private void ResetButton_Click(object sender, EventArgs e)
         {
             HeightTextBox.Text = string.Empty;
             WeightTextBox.Text = string.Empty;
             BMITextBox.Text = string.Empty;
             MultilineTextBox.Text = string.Empty;
+
+            outputString = "0";
+            outputValue = 0.0f;
+            decimalExists = false;
+
+        }
+        /// <summary>
+        /// This is a shared event handler for the CalculatorButton click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculatorButton_Click(object sender, EventArgs e)
+        {
+            Button TheButton = sender as Button;
+            var tag = TheButton.Tag.ToString();
+            int numericValue = 0;
+
+            bool numericResult = int.TryParse(tag, out numericValue);
+
+            if (numericResult)
+            {
+                if(outputString == "0")
+                {
+                    outputString = tag;
+                }
+                else
+                {
+                    outputString += tag;
+                }
+                HeightTextBox.Text = outputString;
+            }
+            else
+            {
+                switch (tag)
+                {
+                    case "backspace":
+                        break;
+                    case "decimal":
+                        if(!decimalExists)
+                        {
+                            outputString += ".";
+                            decimalExists = true;
+                        }
+                        break;
+                }
+            }
+
         }
     }
 }

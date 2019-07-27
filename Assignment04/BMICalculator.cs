@@ -219,9 +219,7 @@ namespace Assignment04
                 BMIResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
             BMIResultTextBox.Text = $"BMI: {bmi:N1}";
-
             NumberKeysTableLayoutPanel.Visible = false;
-
             ProgressBar(bmi);
         }
 

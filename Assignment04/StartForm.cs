@@ -22,6 +22,11 @@ namespace Assignment04
             InitializeComponent();
         }
 
+        /// <summary>
+        /// This event will close the start page after 3 secs and open the BMICalculatorForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartFormTimer_Tick(object sender, EventArgs e)
         {
             StartFormTimer.Enabled = false;

@@ -21,6 +21,7 @@ using System.Windows.Forms;
 // 25-Jul-2019  Created CalculatorButton_Click Event
 // 25-Jul-2019  Added properties to store values from numeric keypad
 // 25-Jul-2019  Created an overload for the method ResetButton_Click
+// 25-Jul-2019  Created TextBox_Click Event
 namespace Assignment04
 {
     public partial class BMICalculatorForm : Form
@@ -30,15 +31,93 @@ namespace Assignment04
         public float outputValue { get; set; }
         public bool decimalExists  { get; set; }
 
+        public TextBox ActiveTextBox { get; set; }
+
         public BMICalculatorForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// This is the event handler that triggers when the form loads
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BMICalculatorForm_Load(object sender, EventArgs e)
         {
-            ResetButton_Click();
-            if (HeightTextBox.Text != null && WeightTextBox.Text != null)
+            ClearNumericKeyboard();
+            NumberKeysTableLayoutPanel.Visible = false;
+            CalculateBMIButton.Enabled = false;
+        }
+
+        /// <summary>
+        /// This is a method to reset the values
+        /// </summary>
+        private void ClearNumericKeyboard()
+        {
+            HeightTextBox.Text = string.Empty;
+            WeightTextBox.Text = string.Empty;
+            BMIResultTextBox.Text = string.Empty;
+            BMIScaleMultilineTextBox.Text = string.Empty;
+
+            outputString = "0";
+            outputValue = 0.0f;
+            decimalExists = false;
+        }
+
+        /// <summary>
+        /// This is the event handler when the form closes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BMICalculatorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        /// <summary>
+        /// This is the event handler to switch unit labels to metric
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MetricRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            UnitHeightLabel.Text = "m";
+            UnitWeightLabel.Text = "kg";
+        }
+
+        /// <summary>
+        /// This is the event handler to switch unit labels to imperial
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ImperialRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            UnitHeightLabel.Text = "in";
+            UnitWeightLabel.Text = "lbs";
+        }
+
+        /// <summary>
+        /// This is the event handler for the shared click event of HeightTextBox and WeightTextbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBox_Click(object sender, EventArgs e)
+        {
+            ClearNumericKeyboard();
+            NumberKeysTableLayoutPanel.Visible = true;
+            
+            ActiveTextBox = sender as TextBox;
+        }
+
+        /// <summary>
+        /// Shared event when text is changed calculate button enabled
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (HeightTextBox.Text != string.Empty && WeightTextBox.Text != string.Empty)
             {
                 CalculateBMIButton.Enabled = true;
             }
@@ -48,82 +127,12 @@ namespace Assignment04
             }
         }
 
-        private void BMICalculatorForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void MetricRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            UnitHeightLabel.Text = "m";
-            UnitWeightLabel.Text = "kg";
-        }
-
-        private void ImperialRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            UnitHeightLabel.Text = "in";
-            UnitWeightLabel.Text = "lbs";
-        }
-
-        private void CalculateBMIButton_Click(object sender, EventArgs e)
-        {
-            double weight = Convert.ToDouble(WeightTextBox.Text);
-            double height = Convert.ToDouble(HeightTextBox.Text);
-            double bmi = MetricRadioButton.Checked == true ? weight / (height * height) : (weight * 703) / (height * height);
-            if (bmi < 18.5)
-            {
-                MultilineTextBox.Text = "Underweight";
-            }
-            else if (bmi >= 18.5 && bmi <= 24.9)
-            {
-                MultilineTextBox.Text = "Normal";
-            }
-            else if (bmi >= 25 && bmi <= 29.9)
-            {
-                MultilineTextBox.Text = "Overweight";
-            }
-            else if (bmi >= 30)
-            {
-                MultilineTextBox.Text = "Obese";
-            }
-            else
-            {
-                MultilineTextBox.Text = "Error!";
-            }
-            BMITextBox.Text = $"BMI: {bmi:N1}";
-        }
-
-        private void ResetButton_Click()
-        {
-            HeightTextBox.Text = string.Empty;
-            WeightTextBox.Text = string.Empty;
-            BMITextBox.Text = string.Empty;
-            MultilineTextBox.Text = string.Empty;
-
-            outputString = "0";
-            outputValue = 0.0f;
-            decimalExists = false;
-
-        }
-
-        private void ResetButton_Click(object sender, EventArgs e)
-        {
-            HeightTextBox.Text = string.Empty;
-            WeightTextBox.Text = string.Empty;
-            BMITextBox.Text = string.Empty;
-            MultilineTextBox.Text = string.Empty;
-
-            outputString = "0";
-            outputValue = 0.0f;
-            decimalExists = false;
-
-        }
         /// <summary>
-        /// This is a shared event handler for the CalculatorButton click event
+        /// This is the shared Event Handler for all the keypad buttons - Click Event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CalculatorButton_Click(object sender, EventArgs e)
+        private void KeypadButton_Click(object sender, EventArgs e)
         {
             Button TheButton = sender as Button;
             var tag = TheButton.Tag.ToString();
@@ -133,24 +142,39 @@ namespace Assignment04
 
             if (numericResult)
             {
-                if(outputString == "0")
+                int maxSize = (decimalExists) ? 5 : 3;
+                if (outputString == "0")
                 {
                     outputString = tag;
                 }
                 else
                 {
-                    outputString += tag;
+                    if (outputString.Length <= maxSize)
+                    {
+                        outputString += tag;
+                    }
                 }
-                HeightTextBox.Text = outputString;
+                ActiveTextBox.Text = outputString;
             }
             else
             {
                 switch (tag)
                 {
                     case "backspace":
+                        var lastChar = outputString.Substring(outputString.Length - 1);
+                        if (lastChar == ".")
+                        {
+                            decimalExists = false;
+                        }
+                        outputString = outputString.Remove(outputString.Length - 1);
+                        HeightTextBox.Text = outputString;
+                        if (outputString.Length == 0)
+                        {
+                            outputString = "0";
+                        }
                         break;
                     case "decimal":
-                        if(!decimalExists)
+                        if (!decimalExists)
                         {
                             outputString += ".";
                             decimalExists = true;
@@ -158,7 +182,90 @@ namespace Assignment04
                         break;
                 }
             }
+        }
 
+        /// <summary>
+        /// This is the event handler to calculate bmi based on the input values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculateBMIButton_Click(object sender, EventArgs e)
+        {
+            double weight = Convert.ToDouble(WeightTextBox.Text);
+            double height = Convert.ToDouble(HeightTextBox.Text);
+            double bmi = MetricRadioButton.Checked == true ? weight / (height * height) : (weight * 703) / (height * height);
+            if (bmi < 18.5)
+            {
+                BMIScaleMultilineTextBox.Text = "Underweight";
+                //copied code format from Designer
+                BMIResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            }
+            else if (bmi >= 18.5 && bmi <= 24.9)
+            {
+                BMIScaleMultilineTextBox.Text = "Normal";
+                BMIResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(30)))), ((int)(((byte)(0)))));
+            }
+            else if (bmi >= 25 && bmi <= 29.9)
+            {
+                BMIScaleMultilineTextBox.Text = "Overweight";
+                BMIResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(160)))), ((int)(((byte)(20)))));
+            }
+            else if (bmi >= 30)
+            {
+                BMIScaleMultilineTextBox.Text = "Obese";
+                BMIResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            }
+            else
+            {
+                BMIScaleMultilineTextBox.Text = "Error!";
+                BMIResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            }
+            BMIResultTextBox.Text = $"BMI: {bmi:N1}";
+
+            NumberKeysTableLayoutPanel.Visible = false;
+        }
+
+        /// <summary>
+        /// Clears and resets the values
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            HeightTextBox.Text = string.Empty;
+            WeightTextBox.Text = string.Empty;
+            BMIResultTextBox.Text = string.Empty;
+            BMIScaleMultilineTextBox.Text = string.Empty;
+
+            outputString = "0";
+            outputValue = 0.0f;
+            decimalExists = false;
+
+        }
+
+        private void ProgressBar(double bmi)
+        {
+            // Display the ProgressBar control.
+            BMIProgressBar.Visible = true;
+            // Set Minimum to 1 to represent the first file being copied.
+            BMIProgressBar.Minimum = 1;
+            // Set Maximum to the total number of files to copy.
+            //BMIProgressBar.Maximum = filenames.Length;
+            // Set the initial value of the ProgressBar.
+            BMIProgressBar.Value = 1;
+            // Set the Step property to a value of 1 to represent each file being copied.
+            BMIProgressBar.Step = 1;
+
+            
+
+            // Loop through all files to copy.
+            for (int x = 1; x <= bmi; x++)
+            {
+                { 
+                    // Perform the increment on the ProgressBar.
+                    pBar1.PerformStep();
+                }
+            }
         }
     }
 }

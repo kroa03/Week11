@@ -34,9 +34,9 @@
             this.HeightLabel = new System.Windows.Forms.Label();
             this.ImperialRadioButton = new System.Windows.Forms.RadioButton();
             this.MetricRadioButton = new System.Windows.Forms.RadioButton();
-            this.BMITextBox = new System.Windows.Forms.TextBox();
+            this.BMIResultTextBox = new System.Windows.Forms.TextBox();
             this.CalculateBMIButton = new System.Windows.Forms.Button();
-            this.MultilineTextBox = new System.Windows.Forms.TextBox();
+            this.BMIScaleMultilineTextBox = new System.Windows.Forms.TextBox();
             this.WeightTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.UnitWeightLabel = new System.Windows.Forms.Label();
             this.WeightTextBox = new System.Windows.Forms.TextBox();
@@ -56,9 +56,11 @@
             this.TwoButton = new System.Windows.Forms.Button();
             this.ThreeButton = new System.Windows.Forms.Button();
             this.ZeroButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.HeightTableLayoutPanel.SuspendLayout();
             this.WeightTableLayoutPanel.SuspendLayout();
             this.NumberKeysTableLayoutPanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // HeightTableLayoutPanel
@@ -106,6 +108,8 @@
             this.HeightTextBox.Size = new System.Drawing.Size(98, 43);
             this.HeightTextBox.TabIndex = 3;
             this.HeightTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.HeightTextBox.Click += new System.EventHandler(this.TextBox_Click);
+            this.HeightTextBox.TextChanged += new System.EventHandler(this.HeightTextBox_TextChanged);
             // 
             // HeightLabel
             // 
@@ -144,17 +148,19 @@
             this.MetricRadioButton.UseVisualStyleBackColor = true;
             this.MetricRadioButton.CheckedChanged += new System.EventHandler(this.MetricRadioButton_CheckedChanged);
             // 
-            // BMITextBox
+            // BMIResultTextBox
             // 
-            this.BMITextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.BMITextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BMITextBox.Enabled = false;
-            this.BMITextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.BMITextBox.Location = new System.Drawing.Point(183, 160);
-            this.BMITextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.BMITextBox.Name = "BMITextBox";
-            this.BMITextBox.Size = new System.Drawing.Size(109, 36);
-            this.BMITextBox.TabIndex = 6;
+            this.BMIResultTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BMIResultTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.BMIResultTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BMIResultTextBox.Enabled = false;
+            this.BMIResultTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.BMIResultTextBox.Location = new System.Drawing.Point(174, 8);
+            this.BMIResultTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.BMIResultTextBox.Name = "BMIResultTextBox";
+            this.BMIResultTextBox.Size = new System.Drawing.Size(131, 36);
+            this.BMIResultTextBox.TabIndex = 6;
+            this.BMIResultTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CalculateBMIButton
             // 
@@ -173,18 +179,21 @@
             this.CalculateBMIButton.UseVisualStyleBackColor = false;
             this.CalculateBMIButton.Click += new System.EventHandler(this.CalculateBMIButton_Click);
             // 
-            // MultilineTextBox
+            // BMIScaleMultilineTextBox
             // 
-            this.MultilineTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.MultilineTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MultilineTextBox.Enabled = false;
-            this.MultilineTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.MultilineTextBox.Location = new System.Drawing.Point(8, 159);
-            this.MultilineTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MultilineTextBox.Multiline = true;
-            this.MultilineTextBox.Name = "MultilineTextBox";
-            this.MultilineTextBox.Size = new System.Drawing.Size(169, 44);
-            this.MultilineTextBox.TabIndex = 9;
+            this.BMIScaleMultilineTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BMIScaleMultilineTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.BMIScaleMultilineTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BMIScaleMultilineTextBox.Enabled = false;
+            this.BMIScaleMultilineTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.BMIScaleMultilineTextBox.Location = new System.Drawing.Point(3, 4);
+            this.BMIScaleMultilineTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BMIScaleMultilineTextBox.Multiline = true;
+            this.BMIScaleMultilineTextBox.Name = "BMIScaleMultilineTextBox";
+            this.BMIScaleMultilineTextBox.Size = new System.Drawing.Size(168, 44);
+            this.BMIScaleMultilineTextBox.TabIndex = 9;
+            this.BMIScaleMultilineTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // WeightTableLayoutPanel
             // 
@@ -231,6 +240,8 @@
             this.WeightTextBox.Size = new System.Drawing.Size(98, 43);
             this.WeightTextBox.TabIndex = 4;
             this.WeightTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.WeightTextBox.Click += new System.EventHandler(this.TextBox_Click);
+            this.WeightTextBox.TextChanged += new System.EventHandler(this.HeightTextBox_TextChanged);
             // 
             // WeightLabel
             // 
@@ -316,7 +327,7 @@
             this.BackspaceButton.Tag = "backspace";
             this.BackspaceButton.Text = "<-";
             this.BackspaceButton.UseVisualStyleBackColor = false;
-            this.BackspaceButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.BackspaceButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // DecimalButton
             // 
@@ -336,7 +347,7 @@
             this.DecimalButton.Tag = "decimal";
             this.DecimalButton.Text = ".";
             this.DecimalButton.UseVisualStyleBackColor = false;
-            this.DecimalButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.DecimalButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // SevenButton
             // 
@@ -356,7 +367,7 @@
             this.SevenButton.Tag = "7";
             this.SevenButton.Text = "7";
             this.SevenButton.UseVisualStyleBackColor = false;
-            this.SevenButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.SevenButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // EightButton
             // 
@@ -376,7 +387,7 @@
             this.EightButton.Tag = "8";
             this.EightButton.Text = "8";
             this.EightButton.UseVisualStyleBackColor = false;
-            this.EightButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.EightButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // NineButton
             // 
@@ -396,7 +407,7 @@
             this.NineButton.Tag = "9";
             this.NineButton.Text = "9";
             this.NineButton.UseVisualStyleBackColor = false;
-            this.NineButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.NineButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // FourButton
             // 
@@ -416,7 +427,7 @@
             this.FourButton.Tag = "4";
             this.FourButton.Text = "4";
             this.FourButton.UseVisualStyleBackColor = false;
-            this.FourButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.FourButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // FiveButton
             // 
@@ -436,7 +447,7 @@
             this.FiveButton.Tag = "5";
             this.FiveButton.Text = "5";
             this.FiveButton.UseVisualStyleBackColor = false;
-            this.FiveButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.FiveButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // SixButton
             // 
@@ -456,7 +467,7 @@
             this.SixButton.Tag = "6";
             this.SixButton.Text = "6";
             this.SixButton.UseVisualStyleBackColor = false;
-            this.SixButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.SixButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // OneButton
             // 
@@ -476,7 +487,7 @@
             this.OneButton.Tag = "1";
             this.OneButton.Text = "1";
             this.OneButton.UseVisualStyleBackColor = false;
-            this.OneButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.OneButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // TwoButton
             // 
@@ -496,7 +507,7 @@
             this.TwoButton.Tag = "2";
             this.TwoButton.Text = "2";
             this.TwoButton.UseVisualStyleBackColor = false;
-            this.TwoButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.TwoButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // ThreeButton
             // 
@@ -516,7 +527,7 @@
             this.ThreeButton.Tag = "3";
             this.ThreeButton.Text = "3";
             this.ThreeButton.UseVisualStyleBackColor = false;
-            this.ThreeButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.ThreeButton.Click += new System.EventHandler(this.KeypadButton_Click);
             // 
             // ZeroButton
             // 
@@ -536,7 +547,22 @@
             this.ZeroButton.Tag = "0";
             this.ZeroButton.Text = "0";
             this.ZeroButton.UseVisualStyleBackColor = false;
-            this.ZeroButton.Click += new System.EventHandler(this.CalculatorButton_Click);
+            this.ZeroButton.Click += new System.EventHandler(this.KeypadButton_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.14286F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.85714F));
+            this.tableLayoutPanel1.Controls.Add(this.BMIScaleMultilineTextBox, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BMIResultTextBox, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 152);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(305, 52);
+            this.tableLayoutPanel1.TabIndex = 14;
             // 
             // BMICalculatorForm
             // 
@@ -545,12 +571,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(304, 441);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.NumberKeysTableLayoutPanel);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.BMIProgressBar);
             this.Controls.Add(this.WeightTableLayoutPanel);
-            this.Controls.Add(this.MultilineTextBox);
-            this.Controls.Add(this.BMITextBox);
             this.Controls.Add(this.CalculateBMIButton);
             this.Controls.Add(this.MetricRadioButton);
             this.Controls.Add(this.ImperialRadioButton);
@@ -572,8 +597,9 @@
             this.WeightTableLayoutPanel.ResumeLayout(false);
             this.WeightTableLayoutPanel.PerformLayout();
             this.NumberKeysTableLayoutPanel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -584,9 +610,9 @@
         private System.Windows.Forms.RadioButton MetricRadioButton;
         private System.Windows.Forms.Label HeightLabel;
         private System.Windows.Forms.TextBox HeightTextBox;
-        private System.Windows.Forms.TextBox BMITextBox;
+        private System.Windows.Forms.TextBox BMIResultTextBox;
         private System.Windows.Forms.Button CalculateBMIButton;
-        private System.Windows.Forms.TextBox MultilineTextBox;
+        private System.Windows.Forms.TextBox BMIScaleMultilineTextBox;
         private System.Windows.Forms.Label UnitHeightLabel;
         private System.Windows.Forms.TableLayoutPanel WeightTableLayoutPanel;
         private System.Windows.Forms.Label UnitWeightLabel;
@@ -607,6 +633,7 @@
         private System.Windows.Forms.Button TwoButton;
         private System.Windows.Forms.Button ThreeButton;
         private System.Windows.Forms.Button ZeroButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 

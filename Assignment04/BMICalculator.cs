@@ -55,8 +55,6 @@ namespace Assignment04
         /// </summary>
         private void ClearNumericKeyboard()
         {
-            HeightTextBox.Text = string.Empty;
-            WeightTextBox.Text = string.Empty;
             BMIResultTextBox.Text = string.Empty;
             BMIScaleMultilineTextBox.Text = string.Empty;
 
@@ -223,6 +221,8 @@ namespace Assignment04
             BMIResultTextBox.Text = $"BMI: {bmi:N1}";
 
             NumberKeysTableLayoutPanel.Visible = false;
+
+            ProgressBar(bmi);
         }
 
         /// <summary>
@@ -245,25 +245,24 @@ namespace Assignment04
 
         private void ProgressBar(double bmi)
         {
+            // References https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.progressbar?view=netframework-4.8
             // Display the ProgressBar control.
             BMIProgressBar.Visible = true;
             // Set Minimum to 1 to represent the first file being copied.
             BMIProgressBar.Minimum = 1;
             // Set Maximum to the total number of files to copy.
-            //BMIProgressBar.Maximum = filenames.Length;
+            BMIProgressBar.Maximum = 50;
             // Set the initial value of the ProgressBar.
             BMIProgressBar.Value = 1;
-            // Set the Step property to a value of 1 to represent each file being copied.
+            // Set the Step property to a value of 1
             BMIProgressBar.Step = 1;
-
-            
 
             // Loop through all files to copy.
             for (int x = 1; x <= bmi; x++)
             {
-                { 
+                {
                     // Perform the increment on the ProgressBar.
-                    pBar1.PerformStep();
+                    BMIProgressBar.PerformStep();
                 }
             }
         }
